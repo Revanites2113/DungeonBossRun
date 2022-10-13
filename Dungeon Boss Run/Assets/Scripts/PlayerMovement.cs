@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         movementAni.SetBool("isMoving", false);
         movementAni.SetBool("isRight", false);
         movementAni.SetBool("isLeft", false);
+        movementAni.SetBool("isAttacking", false);
         
         if (Input.GetKey(KeyCode.W))
         {
@@ -48,6 +49,11 @@ public class PlayerMovement : MonoBehaviour
         {
             moveX = -1;
             movementAni.SetBool("isLeft", true);
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            movementAni.SetBool("isAttacking", true);
         }
 
         _moveDir = new Vector3(moveX, moveY, 0);
