@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PhaseOne : StateMachineBehaviour
 {
-    [SerializeField] GameObject projectile;
+    //will enable and disable skull instatiation here
+    [SerializeField] private GameObject skullProjectile;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        skullProjectile.SetActive(true);
+        animator.GetComponent<SkullInstantiation>().enabled = true;
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -18,10 +21,11 @@ public class PhaseOne : StateMachineBehaviour
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        skullProjectile.SetActive(false);
+        animator.GetComponent<SkullInstantiation>().enabled = false;
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
