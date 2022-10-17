@@ -2,32 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhaseOne : StateMachineBehaviour
+public class DecideAttack : StateMachineBehaviour
 {
-    //will enable and disable skull instatiation here
-    [SerializeField] private GameObject skullProjectile;
-
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        skullProjectile.SetActive(true);
-        animator.GetComponent<SkullInstantiation>().enabled = true;
+        //okay we gonna set a rand int for the next attack based on bool values and phases
+        int min = 0;
+        int max;
+        if (animator.GetBool("isPhase2"))
+        {
+            max = 2;
+            animator.SetInteger("randAttackInt", Random.Range(min, max));
+        }
+        else if (animator.GetBool("isPhase3"))
+        {
+            max = 3;
+            animator.SetInteger("randAttackInt", Random.Range(min, max));
+        }
+        else
+        {
+            animator.SetInteger("randAttackInt", 0);
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        
-    }
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        skullProjectile.SetActive(false);
-        animator.GetComponent<SkullInstantiation>().enabled = false;
-        //call new attack rand here for animator to choose next thing
-        
-    }
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
