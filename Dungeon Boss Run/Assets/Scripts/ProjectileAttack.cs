@@ -61,7 +61,15 @@ public class ProjectileAttack : MonoBehaviour
         if (col.collider.tag == "Boss")
         {
             //do enemy damage then destroy instatiation
-            EnemySingleton.Enemy.hpBoss -= 1;
+            //also branch based on if player is powered up
+            if (PlayerSingleton.player.isPowerUp)
+            {
+                EnemySingleton.Enemy.hpBoss -= 3;
+            }
+            else
+            {
+                EnemySingleton.Enemy.hpBoss -= 1;
+            }
             Destroy(gameObject);
         }
     }

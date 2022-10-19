@@ -11,15 +11,12 @@ public class PlayerSingleton : MonoBehaviour
     public static PlayerSingleton player;
 
     public int health = 3;
-
-    private void Awake()
-    {
-        player = this;
-    }
+    public bool isPowerUp;
+    
 
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
+        player = this;
     }
     void Update()
     {

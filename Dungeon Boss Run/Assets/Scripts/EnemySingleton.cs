@@ -7,20 +7,14 @@ using UnityEngine.SceneManagement;
 public class EnemySingleton : MonoBehaviour
 {
     private Animator _enemyAni;
-    [SerializeField] private Animator _tileAni;
 
     public static EnemySingleton Enemy;
     public int hpBoss = 100;
 
-    private void Awake()
-    {
-        Enemy = this;
-    }
-
     void Start()
     {
+        Enemy = this;
         _enemyAni = gameObject.GetComponent<Animator>();
-        DontDestroyOnLoad(gameObject);
     }
 
     

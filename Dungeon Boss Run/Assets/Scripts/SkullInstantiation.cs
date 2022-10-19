@@ -19,7 +19,6 @@ public class SkullInstantiation : MonoBehaviour
     private void OnEnable()
     {
         skullProjectile.SetActive(true);
-        StartCoroutine("EnsureState");
         StartCoroutine("InstanSkull");
     }
 
@@ -32,6 +31,7 @@ public class SkullInstantiation : MonoBehaviour
     IEnumerator InstanSkull()
     {
         //until gameobject anim state changes, do not return null and keep returning .3 sec
+        
         bool isAttack = _animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1");
         while (isAttack)
         {
@@ -39,12 +39,6 @@ public class SkullInstantiation : MonoBehaviour
             yield return new WaitForSeconds(.75f);
             isAttack = _animator.GetCurrentAnimatorStateInfo(0).IsName("Attack1");
         }
-        yield return null;
-    }
-
-    IEnumerator EnsureState()
-    {
-        yield return new WaitForSeconds(1f);
         yield return null;
     }
 }
