@@ -24,7 +24,7 @@ public class PhaseOne : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        skullProjectile.SetActive(false);
+        //skullProjectile.SetActive(false);
         animator.GetComponent<SkullInstantiation>().enabled = false;
     }
 

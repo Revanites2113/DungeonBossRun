@@ -29,5 +29,10 @@ public class EnemySingleton : MonoBehaviour
         {
             _enemyAni.SetBool("isPhase3", true);
         }
+
+        if (hpBoss <= 0)
+        {
+            _enemyAni.SetBool("victoryPlayer", true);
+        }
     }
 }
